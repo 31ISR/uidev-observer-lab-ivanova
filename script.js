@@ -39,6 +39,26 @@ window.addEventListener("scroll", () => {
     }
 });
 
+const tocLinks = document.querySelectorAll(".nav-links a");
+
+tocLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const id = link.getAttribute("href");
+        console.log("Клик по ссылке на", id);
+        document.querySelector(id).scrollIntoView({behavior: "smooth", block: "center"});
+    });
+}); 
+
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("particle");
+    flake.style.left = Math.random() * 100 + "%";
+    flake.style.animationDelay = Math.random() * 100 + "ms";
+    flake.style.animationDuration = Math.random() * 10000 + "ms";
+    document.querySelector(".hero").appendChild(flake);
+}
+
 staggered.forEach((card) => {
     recipeObserver.observe(card);
 });
